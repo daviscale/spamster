@@ -1,0 +1,37 @@
+<h1>Training Set Statistics</h1>
+
+<p>
+  <b>Total Number of Words:</b>
+  <%= @stats[:word_total] %>
+</p>
+
+<p>
+  <b>Total Number of Relevant Words:</b>
+  <%= @stats[:cat_totals][:relevant] %>
+</p>
+
+<p>
+  <b>Total Number of Spam Words:</b>
+  <%= @stats[:cat_totals][:spam] %>
+</p>
+
+<h2>Relevant Word Counts</h2>
+
+<% @stats[:word_cat_totals][:relevant].each do |word, count| %>
+<p>
+  <b><%= word %>:</b>
+  <%= count %>
+</p>
+<% end %>
+
+<h2>Spam Word Counts</h2>
+
+<% @stats[:word_cat_totals][:spam].each do |word, count| %>
+<p>
+  <b><%= word %>:</b>
+  <%= count %>
+</p>
+<% end %>
+
+
+<%= link_to 'Show Training Set', messages_path %>
