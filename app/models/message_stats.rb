@@ -54,7 +54,10 @@ class MessageStats
         status = :spam
       end
 
-      msg_words = message.content.split(/\W/)
+      content = message.content.sub(/#java/, "")
+      content = content.sub(/https{,1}:\/\/\S* /, "")
+
+      msg_words = content.split(/\W/)
 
       msg_words.each do |word|
         stats[:word_total] = stats[:word_total] + (1.0 * multiplier)
