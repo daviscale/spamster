@@ -12,6 +12,6 @@ Message.find_each do |message|
   message.destroy
 end
 
-Twitter.search("#java -rt", :rpp => 100).each do |tweet|
+Twitter.search("#java -rt", :rpp => 100, :lang => "en").each do |tweet|
   Message.create(content: tweet.text, status: Message::RELEVANT)
 end
