@@ -1,17 +1,13 @@
 <h1>spamster - a demonstration of a naive bayes spam filter</h1>
 
 <p>
-  Enter a message below. spamster will use the training set data to determine if that
-  message is spam or not.
+  Click the button below. spamster will use the training set data to determine if the tweet
+  retrieved is spam or not.
 </p>
 
 <%= form_tag(:controller => "classify", :action => "predict") do %>
-  <div class="field">
-    <%= label_tag(:content, "Message:") %> <br/>
-    <%= text_field_tag(:content) %>
-  </div>
   <div class="actions">
-    <%= submit_tag("Predict!") %>
+    <%= submit_tag("Grab a #java tweet and predict!") %>
   </div>
 <% end %>
 

@@ -3,7 +3,7 @@ class ClassifyController < ApplicationController
   end
 
   def predict
-    @content = params[:content]
+    @content = Twitter.search("#java -rt", :rpp => 1, :lang => "en").first.text
     msg_words = @content.split(/\W/)
     
     stats = MessageStats.stats
