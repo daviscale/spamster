@@ -58,8 +58,16 @@ class MessagesController < ApplicationController
   def update
     @message = Message.find(params[:id])
 
+    prev_message = Message.new
+    prev_message.content = @message.content
+    prev_message.status = @message.status
+
     respond_to do |format|
       if @message.update_attributes(params[:message])
+        logger.debug "Removing previous message from stats"
+
+        MessageStats.decrement_stats(prev_message)
+
         format.html { redirect_to @message, notice: 'Message was successfully updated.' }
         format.json { head :ok }
       else
